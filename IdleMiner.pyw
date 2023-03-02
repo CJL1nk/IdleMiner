@@ -3,13 +3,18 @@ import tkinter.ttk as ttk
 from threading import Thread
 import pygame
 import os
+from sys import platform
 import json
 from time import sleep
 import random
-
 data = {}
-        
-with open(f"{os.getcwd()}\\data.json") as file:
+
+if platform == 'win32':
+    datajson = '\\data.json'
+else:
+    datajson = '/data.json'        
+
+with open(f"{os.getcwd()}{datajson}") as file:
     data = json.load(file)
 
 class UiApp:
@@ -465,7 +470,7 @@ class UiApp:
         self.astatine.set(data['astatine'])
         self.tennessine.set(data['tennessine'])
         
-        with open(f"{os.getcwd()}\\data.json", "w") as file:
+        with open(f"{os.getcwd()}{datajson}", "w") as file:
             json.dump(data, file, indent=4) 
 
 
@@ -1094,7 +1099,7 @@ class UiApp:
                             self.soakite.set(data['soakite'])
                             self.oreFound.set("SOAKITE\n FOUND!!!")
                             
-            with open(f"{os.getcwd()}\\data.json", "w") as file:
+            with open(f"{os.getcwd()}{datajson}", "w") as file:
                 json.dump(data, file, indent=4)
              
 
@@ -1115,7 +1120,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 1:
                     data['pickaxeLevelCost'] = 5000
@@ -1128,7 +1133,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 2:
                     data['pickaxeLevelCost'] = 50000
@@ -1141,7 +1146,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 3:
                     data['pickaxeLevelCost'] = 500000
@@ -1154,7 +1159,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 4:
                     data['pickaxeLevelCost'] = 5000000
@@ -1167,7 +1172,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 5:
                     data['pickaxeLevelCost'] = 10000000
@@ -1180,7 +1185,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 6:
                     data['pickaxeLevelCost'] = 100000000
@@ -1193,7 +1198,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 7:
                     data['pickaxeLevelCost'] = 1000000000
@@ -1206,13 +1211,13 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
         else:
             data['pickaxeLevelCost'] = 0
             self.upgradeCost.set(data['pickaxeLevelCost'])
             
-            with open(f"{os.getcwd()}\\data.json", "w") as file:
+            with open(f"{os.getcwd()}{datajson}", "w") as file:
                 json.dump(data, file, indent=4) 
 
 
@@ -1233,7 +1238,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 1:
                     data['pickaxeSpeedCost'] = 5000
@@ -1246,7 +1251,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 2:
                     data['pickaxeSpeedCost'] = 50000
@@ -1259,7 +1264,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 3:
                     data['pickaxeSpeedCost'] = 500000
@@ -1272,7 +1277,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 4:
                     data['pickaxeSpeedCost'] = 5000000
@@ -1285,7 +1290,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 5:
                     data['pickaxeSpeedCost'] = 10000000
@@ -1298,7 +1303,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 6:
                     data['pickaxeSpeedCost'] = 100000000
@@ -1311,7 +1316,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 7:
                     data['pickaxeSpeedCost'] = 1000000000
@@ -1324,13 +1329,13 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{os.getcwd()}\\data.json", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
         else:
             data['pickaxeSpeedCost'] = 0
             self.speedCost.set(data['pickaxeSpeedCost'])
             
-            with open(f"{os.getcwd()}\\data.json", "w") as file:
+            with open(f"{os.getcwd()}{datajson}", "w") as file:
                 json.dump(data, file, indent=4)
             
 
