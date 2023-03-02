@@ -297,7 +297,7 @@ class UiApp:
         label12.configure(font="{Comic Sans MS} 20 {}", text='IDLEMINER')
         label12.grid(column=6, row=0, sticky="n")
         self.invisLabel4 = ttk.Label(toplevel1)
-        self.invisLabel4.configure(font="{Corbel} 8 {}", text='V1.0!')
+        self.invisLabel4.configure(font="{Corbel} 8 {}", text='V1.0.1!')
         self.invisLabel4.grid(column=6, row=0)
       
         self.coal.set(data['coal'])
@@ -638,19 +638,19 @@ class UiApp:
                             self.emerald.set(data['emerald'])
                             self.oreFound.set("Emerald\n Found!")
                         case num if num > 725000 and num <= 850000:
-                            data['ruby'] = 1
+                            data['ruby'] += 1
                             self.ruby.set(data['ruby'])
                             self.oreFound.set("Ruby Found!")
                         case num if num > 850000 and num <= 900000:
-                            data['mythril'] = 1
+                            data['mythril'] += 1
                             self.mythril.set(data['mythril'])
                             self.oreFound.set("Mythril\n Found!")
                         case num if num > 900000 and num <= 950000:
-                            data['adamantite'] = 1
+                            data['adamantite'] += 1
                             self.adamantite.set(data['adamantite'])
                             self.oreFound.set("Adamantite\n Found!")
                         case num if num > 950000 and num <= 1000000:
-                            data['orichalcum'] = 1
+                            data['orichalcum'] += 1
                             self.orichalcum.set(data['orichalcum'])
                             self.oreFound.set("Orichalcum\n Found!")
                             
@@ -690,31 +690,31 @@ class UiApp:
                             self.emerald.set(data['emerald'])
                             self.oreFound.set("Emerald\n Found!")
                         case num if num > 450000 and num <= 525000:
-                            data['ruby'] = 1
+                            data['ruby'] += 1
                             self.ruby.set(data['ruby'])
                             self.oreFound.set("Ruby Found!")
                         case num if num > 525000 and num <= 650000:
-                            data['mythril'] = 1
+                            data['mythril'] += 1
                             self.mythril.set(data['mythril'])
                             self.oreFound.set("Mythril\n Found!")
                         case num if num > 650000 and num <= 750000:
-                            data['adamantite'] = 1
+                            data['adamantite'] += 1
                             self.adamantite.set(data['adamantite'])
                             self.oreFound.set("Adamantite\n Found!")
                         case num if num > 750000 and num <= 850000:
-                            data['orichalcum'] = 1
+                            data['orichalcum'] += 1
                             self.orichalcum.set(data['orichalcum'])
                             self.oreFound.set("Orichalcum\n Found!")
                         case num if num > 850000 and num <= 900000:
-                            data['lanthanum'] = 1
+                            data['lanthanum'] += 1
                             self.lanthanum.set(data['lanthanum'])
                             self.oreFound.set("Lanthanum\n Found!")
                         case num if num > 900000 and num <= 950000:
-                            data['cerium'] = 1
+                            data['cerium'] += 1
                             self.cerium.set(data['cerium'])
                             self.oreFound.set("Cerium Found!")
                         case num if num > 950000 and num <= 1000000:
-                            data['praseodymium'] = 1
+                            data['praseodymium'] += 1
                             self.praseodymium.set(data['praseodymium'])
                             self.oreFound.set("Praseodymium\n Found!")
                             
@@ -754,43 +754,43 @@ class UiApp:
                             self.emerald.set(data['emerald'])
                             self.oreFound.set("Emerald\n Found!")
                         case num if num > 350000 and num <= 400000:
-                            data['ruby'] = 1
+                            data['ruby'] += 1
                             self.ruby.set(data['ruby'])
                             self.oreFound.set("Ruby Found!")
                         case num if num > 400000 and num <= 500000:
-                            data['mythril'] = 1
+                            data['mythril'] += 1
                             self.mythril.set(data['mythril'])
                             self.oreFound.set("Mythril\n Found!")
                         case num if num > 500000 and num <= 600000:
-                            data['adamantite'] = 1
+                            data['adamantite'] += 1
                             self.adamantite.set(data['adamantite'])
                             self.oreFound.set("Adamantite\n Found!")
                         case num if num > 600000 and num <= 700000:
-                            data['orichalcum'] = 1
+                            data['orichalcum'] += 1
                             self.orichalcum.set(data['orichalcum'])
                             self.oreFound.set("Orichalcum\n Found!")
                         case num if num > 700000 and num <= 800000:
-                            data['lanthanum'] = 1
+                            data['lanthanum'] += 1
                             self.lanthanum.set(data['lanthanum'])
                             self.oreFound.set("Lanthanum\n Found!")
                         case num if num > 800000 and num <= 850000:
-                            data['cerium'] = 1
+                            data['cerium'] += 1
                             self.cerium.set(data['cerium'])
                             self.oreFound.set("Cerium Found!")
                         case num if num > 850000 and num <= 900000:
-                            data['praseodymium'] = 1
+                            data['praseodymium'] += 1
                             self.praseodymium.set(data['praseodymium'])
                             self.oreFound.set("Praseodymium\n Found!")
                         case num if num > 900000 and num <= 933000:
-                            data['promethium'] = 1
+                            data['promethium'] += 1
                             self.promethium.set(data['promethium'])
                             self.oreFound.set("Promethium\n Found!")
                         case num if num > 933000 and num <= 966000:
-                            data['europium'] = 1
+                            data['europium'] += 1
                             self.europium.set(data['europium'])
                             self.oreFound.set("Europium\n Found!")
                         case num if num > 966000 and num <= 1000000:
-                            data['hafnium'] = 1
+                            data['hafnium'] += 1
                             self.hafnium.set(data['hafnium'])
                             self.oreFound.set("Hafnium Found!")
                             
@@ -830,55 +830,55 @@ class UiApp:
                             self.emerald.set(data['emerald'])
                             self.oreFound.set("Emerald\n Found!")
                         case num if num > 300000 and num <= 350000:
-                            data['ruby'] = 1
+                            data['ruby'] += 1
                             self.ruby.set(data['ruby'])
                             self.oreFound.set("Ruby Found!")
                         case num if num > 350000 and num <= 425000:
-                            data['mythril'] = 1
+                            data['mythril'] += 1
                             self.mythril.set(data['mythril'])
                             self.oreFound.set("Mythril\n Found!")
                         case num if num > 425000 and num <= 500000:
-                            data['adamantite'] = 1
+                            data['adamantite'] += 1
                             self.adamantite.set(data['adamantite'])
                             self.oreFound.set("Adamantite\n Found!")
                         case num if num > 500000 and num <= 575000:
-                            data['orichalcum'] = 1
+                            data['orichalcum'] += 1
                             self.orichalcum.set(data['orichalcum'])
                             self.oreFound.set("Orichalcum\n Found!")
                         case num if num > 575000 and num <= 650000:
-                            data['lanthanum'] = 1
+                            data['lanthanum'] += 1
                             self.lanthanum.set(data['lanthanum'])
                             self.oreFound.set("Lanthanum\n Found!")
                         case num if num > 650000 and num <= 700000:
-                            data['cerium'] = 1
+                            data['cerium'] += 1
                             self.cerium.set(data['cerium'])
                             self.oreFound.set("Cerium Found!")
                         case num if num > 700000 and num <= 750000:
-                            data['praseodymium'] = 1
+                            data['praseodymium'] += 1
                             self.praseodymium.set(data['praseodymium'])
                             self.oreFound.set("Praseodymium\n Found!")
                         case num if num > 750000 and num <= 800000:
-                            data['promethium'] = 1
+                            data['promethium'] += 1
                             self.promethium.set(data['promethium'])
                             self.oreFound.set("Promethium\n Found!")
                         case num if num > 800000 and num <= 850000:
-                            data['europium'] = 1
+                            data['europium'] += 1
                             self.europium.set(data['europium'])
                             self.oreFound.set("Europium\n Found!")
                         case num if num > 850000 and num <= 900000:
-                            data['hafnium'] = 1
+                            data['hafnium'] += 1
                             self.hafnium.set(data['hafnium'])
                             self.oreFound.set("Hafnium\n Found!")
                         case num if num > 900000 and num <= 933000:
-                            data['osmium'] = 1
+                            data['osmium'] += 1
                             self.osmium.set(data['osmium'])
                             self.oreFound.set("Osmium Found!")
                         case num if num > 933000 and num <= 966000:
-                            data['bismuth'] = 1
+                            data['bismuth'] += 1
                             self.bismuth.set(data['bismuth'])
                             self.oreFound.set("Bismuth\n Found!")
                         case num if num > 966000 and num <= 1000000:
-                            data['francium'] = 1
+                            data['francium'] += 1
                             self.francium.set(data['francium'])
                             self.oreFound.set("Francium\n Found!")
                             
@@ -918,67 +918,67 @@ class UiApp:
                             self.emerald.set(data['emerald'])
                             self.oreFound.set("Emerald\n Found!")
                         case num if num > 250000 and num <= 300000:
-                            data['ruby'] = 1
+                            data['ruby'] += 1
                             self.ruby.set(data['ruby'])
                             self.oreFound.set("Ruby Found!")
                         case num if num > 300000 and num <= 350000:
-                            data['mythril'] = 1
+                            data['mythril'] += 1
                             self.mythril.set(data['mythril'])
                             self.oreFound.set("Mythril\n Found!")
                         case num if num > 350000 and num <= 400000:
-                            data['adamantite'] = 1
+                            data['adamantite'] += 1
                             self.adamantite.set(data['adamantite'])
                             self.oreFound.set("Adamantite\n Found!")
                         case num if num > 400000 and num <= 450000:
-                            data['orichalcum'] = 1
+                            data['orichalcum'] += 1
                             self.orichalcum.set(data['orichalcum'])
                             self.oreFound.set("Orichalcum\n Found!")
                         case num if num > 450000 and num <= 500000:
-                            data['lanthanum'] = 1
+                            data['lanthanum'] += 1
                             self.lanthanum.set(data['lanthanum'])
                             self.oreFound.set("Lanthanum\n Found!")
                         case num if num > 500000 and num <= 550000:
-                            data['cerium'] = 1
+                            data['cerium'] += 1
                             self.cerium.set(data['cerium'])
                             self.oreFound.set("Cerium Found!")
                         case num if num > 550000 and num <= 600000:
-                            data['praseodymium'] = 1
+                            data['praseodymium'] += 1
                             self.praseodymium.set(data['praseodymium'])
                             self.oreFound.set("Praseodymium\n Found!")
                         case num if num > 600000 and num <= 650000:
-                            data['promethium'] = 1
+                            data['promethium'] += 1
                             self.promethium.set(data['promethium'])
                             self.oreFound.set("Promethium\n Found!")
                         case num if num > 650000 and num <= 700000:
-                            data['europium'] = 1
+                            data['europium'] += 1
                             self.europium.set(data['europium'])
                             self.oreFound.set("Europium\n Found!")
                         case num if num > 700000 and num <= 750000:
-                            data['hafnium'] = 1
+                            data['hafnium'] += 1
                             self.hafnium.set(data['hafnium'])
                             self.oreFound.set("Hafnium\n Found!")
                         case num if num > 750000 and num <= 800000:
-                            data['osmium'] = 1
+                            data['osmium'] += 1
                             self.osmium.set(data['osmium'])
                             self.oreFound.set("Osmium Found!")
                         case num if num > 800000 and num <= 850000:
-                            data['bismuth'] = 1
+                            data['bismuth'] += 1
                             self.bismuth.set(data['bismuth'])
                             self.oreFound.set("Bismuth\n Found!")
                         case num if num > 850000 and num <= 900000:
-                            data['francium'] = 1
+                            data['francium'] += 1
                             self.francium.set(data['francium'])
                             self.oreFound.set("Francium\n Found!")
                         case num if num > 900000 and num <= 933000:
-                            data['neptunium'] = 1
+                            data['neptunium'] += 1
                             self.neptunium.set(data['neptunium'])
                             self.oreFound.set("Neptunium\n Found!")
                         case num if num > 933000 and num <= 966000:
-                            data['californium'] = 1
+                            data['californium'] += 1
                             self.californium.set(data['californium'])
                             self.oreFound.set("Californium\n Found!")
                         case num if num > 966000 and num <= 1000000:
-                            data['einsteinium'] = 1
+                            data['einsteinium'] += 1
                             self.einsteinium.set(data['einsteinium'])
                             self.oreFound.set("Einsteinium\n Found!")
                             
@@ -1018,79 +1018,79 @@ class UiApp:
                             self.emerald.set(data['emerald'])
                             self.oreFound.set("Emerald\n Found!")
                         case num if num > 80000 and num <= 90000:
-                            data['ruby'] = 1
+                            data['ruby'] += 1
                             self.ruby.set(data['ruby'])
                             self.oreFound.set("Ruby Found!")
                         case num if num > 90000 and num <= 100000:
-                            data['mythril'] = 1
+                            data['mythril'] += 1
                             self.mythril.set(data['mythril'])
                             self.oreFound.set("Mythril\n Found!")
                         case num if num > 100000 and num <= 125000:
-                            data['adamantite'] = 1
+                            data['adamantite'] += 1
                             self.adamantite.set(data['adamantite'])
                             self.oreFound.set("Adamantite\n Found!")
                         case num if num > 125000 and num <= 150000:
-                            data['orichalcum'] = 1
+                            data['orichalcum'] += 1
                             self.orichalcum.set(data['orichalcum'])
                             self.oreFound.set("Orichalcum\n Found!")
                         case num if num > 150000 and num <= 175000:
-                            data['lanthanum'] = 1
+                            data['lanthanum'] += 1
                             self.lanthanum.set(data['lanthanum'])
                             self.oreFound.set("Lanthanum\n Found!")
                         case num if num > 175000 and num <= 200000:
-                            data['cerium'] = 1
+                            data['cerium'] += 1
                             self.cerium.set(data['cerium'])
                             self.oreFound.set("Cerium Found!")
                         case num if num > 200000 and num <= 275000:
-                            data['praseodymium'] = 1
+                            data['praseodymium'] += 1
                             self.praseodymium.set(data['praseodymium'])
                             self.oreFound.set("Praseodymium\n Found!")
                         case num if num > 275000 and num <= 325000:
-                            data['promethium'] = 1
+                            data['promethium'] += 1
                             self.promethium.set(data['promethium'])
                             self.oreFound.set("Promethium\n Found!")
                         case num if num > 325000 and num <= 375000:
-                            data['europium'] = 1
+                            data['europium'] += 1
                             self.europium.set(data['europium'])
                             self.oreFound.set("Europium\n Found!")
                         case num if num > 375000 and num <= 425000:
-                            data['hafnium'] = 1
+                            data['hafnium'] += 1
                             self.hafnium.set(data['hafnium'])
                             self.oreFound.set("Hafnium\n Found!")
                         case num if num > 425000 and num <= 500000:
-                            data['osmium'] = 1
+                            data['osmium'] += 1
                             self.osmium.set(data['osmium'])
                             self.oreFound.set("Osmium Found!")
                         case num if num > 500000 and num <= 575000:
-                            data['bismuth'] = 1
+                            data['bismuth'] += 1
                             self.bismuth.set(data['bismuth'])
                             self.oreFound.set("Bismuth\n Found!")
                         case num if num > 575000 and num <= 650000:
-                            data['francium'] = 1
+                            data['francium'] += 1
                             self.francium.set(data['francium'])
                             self.oreFound.set("Francium\n Found!")
                         case num if num > 650000 and num <= 750000:
-                            data['neptunium'] = 1
+                            data['neptunium'] += 1
                             self.neptunium.set(data['neptunium'])
                             self.oreFound.set("Neptunium\n Found!")
                         case num if num > 750000 and num <= 850000:
-                            data['californium'] = 1
+                            data['californium'] += 1
                             self.californium.set(data['californium'])
                             self.oreFound.set("Californium\n Found!")
                         case num if num > 850000 and num <= 950000:
-                            data['einsteinium'] = 1
+                            data['einsteinium'] += 1
                             self.einsteinium.set(data['einsteinium'])
                             self.oreFound.set("Einsteinium\n Found!")
                         case num if num > 950000 and num <= 975000:
-                            data['astatine'] = 1
+                            data['astatine'] += 1
                             self.astatine.set(data['astatine'])
                             self.oreFound.set("Astatine\n Found!")
                         case num if num > 975000 and num <= 999999:
-                            data['tennessine'] = 1
+                            data['tennessine'] += 1
                             self.tennessine.set(data['tennessine'])
                             self.oreFound.set("Tennessine\n Found!")
                         case num if num == 1000000:
-                            data['soakite'] = 1
+                            data['soakite'] += 1
                             self.soakite.set(data['soakite'])
                             self.oreFound.set("SOAKITE\n FOUND!!!")
                             
