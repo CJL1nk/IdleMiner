@@ -13,10 +13,48 @@ if platform == 'win32':
     datajson = '\\data.json'
 else:
     datajson = '/data.json'        
+if not os.path.isfile(f'{os.getcwd()}{datajson}'):
+    with open (f"{os.getcwd()}{datajson}", 'w') as file:
+        file.write(
+    """{
+    "coal": 0,
+    "tin": 0,
+    "iron": 0,
+    "tungsten": 0,
+    "gold": 0,
+    "platinum": 0,
+    "diamond": 0,
+    "emerald": 0,
+    "ruby": 0,
+    "mythril": 0,
+    "adamantite": 0,
+    "orichalcum": 0,
+    "lanthanum": 0,
+    "cerium": 0,
+    "praseodymium": 0,
+    "promethium": 0,
+    "europium": 0,
+    "hafnium": 0,
+    "osmium": 0,
+    "bismuth": 0,
+    "francium": 0,
+    "neptunium": 0,
+    "californium": 0,
+    "einsteinium": 0,
+    "astatine": 0,
+    "tennessine": 0,
+    "soakite": 0,
+    "dabloons": 0,
+    "pickaxeLevel": 0,
+    "pickaxeSpeed": 0,
+    "pickaxeLevelCost": 500,
+    "pickaxeSpeedCost": 500
+}
+""")
 
 with open(f"{os.getcwd()}{datajson}") as file:
     data = json.load(file)
-
+        
 class UiApp:
     def __init__(self, master=None):
         # build ui
