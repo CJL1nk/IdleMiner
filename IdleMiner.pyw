@@ -13,7 +13,6 @@ if platform == 'win32':
     datajson = '\\data.json'
 else:
     datajson = '/data.json'        
-print(f'{os.getcwd()}{datajson}')
 if not os.path.isfile(f'{os.getcwd()}{datajson}'):
     with open (f"{os.getcwd()}{datajson}", 'w') as file:
         file.write(
