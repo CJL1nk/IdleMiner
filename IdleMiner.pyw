@@ -288,6 +288,11 @@ class UiApp:
         self.speedCost = tk.IntVar(value=0)
         self.costNum2.configure(text='0', textvariable=self.speedCost)
         self.costNum2.grid(column=2, row=4)
+        self.fovSlider = ttk.LabeledScale(frame4, from_=12, to=4435)
+        self.fovSlider.grid(column=0, pady=160, row=2)
+        self.fovLabel = ttk.Label(frame4)
+        self.fovLabel.configure(font="{MV Boli} 20 {}", text='FOV')
+        self.fovLabel.grid(column=1, row=2)
         frame4.grid(column=4, row=0)
         frame4.grid_propagate(0)
         separator3 = ttk.Separator(toplevel1)
@@ -297,7 +302,7 @@ class UiApp:
         label12.configure(font="{Comic Sans MS} 20 {}", text='IDLEMINER')
         label12.grid(column=6, row=0, sticky="n")
         self.invisLabel4 = ttk.Label(toplevel1)
-        self.invisLabel4.configure(font="{Corbel} 8 {}", text='V1.0.1!')
+        self.invisLabel4.configure(font="{Corbel} 8 {}", text='V1.1!')
         self.invisLabel4.grid(column=6, row=0)
       
         self.coal.set(data['coal'])
@@ -337,7 +342,7 @@ class UiApp:
         # Main widget
         self.mainwindow = toplevel1
         
-        toplevel1.title("IDLEMINER   V1.0")
+        toplevel1.title("IDLEMINER   V1.1")
 
 
     def run(self):
