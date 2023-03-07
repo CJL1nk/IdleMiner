@@ -522,9 +522,11 @@ class UiApp:
         isPlaying = False
         
         if isPlaying == False:
-            
-            filename = f"{os.getcwd()}\\Ophanim.mp3"
-            
+            if platform == 'win32':
+                filename = f"{os.getcwd()}\\Ophanim.mp3"
+            else:
+                filename = f"{os.getcwd()}/Ophanim.mp3"
+
             pygame.mixer.init(frequency = 44100, size = -16, channels = 2, buffer = 2**12) 
             channel1 = pygame.mixer.Channel(0)
             
