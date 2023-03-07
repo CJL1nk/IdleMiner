@@ -345,7 +345,7 @@ class UiApp:
         label12.configure(font="{Comic Sans MS} 20 {}", text='IDLEMINER')
         label12.grid(column=6, row=0, sticky="n")
         self.invisLabel4 = ttk.Label(toplevel1)
-        self.invisLabel4.configure(font="{Corbel} 8 {}", text='V1.1!')
+        self.invisLabel4.configure(font="{Corbel} 8 {}", text='V1.1.1!')
         self.invisLabel4.grid(column=6, row=0)
       
         self.coal.set(data['coal'])
@@ -385,7 +385,7 @@ class UiApp:
         # Main widget
         self.mainwindow = toplevel1
         
-        toplevel1.title("IDLEMINER   V1.1")
+        toplevel1.title("IDLEMINER   V1.1.1")
 
 
     def run(self):
@@ -1198,14 +1198,14 @@ class UiApp:
                     if data['dabloons'] >= data['pickaxeLevelCost']:
                         data['dabloons'] -= data['pickaxeLevelCost']
                         data['pickaxeLevel'] += 1
-                        data['pickaxeLevelCost'] = 5000000
+                        data['pickaxeLevelCost'] = 2500000
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
                         with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 4:
-                    data['pickaxeLevelCost'] = 5000000
+                    data['pickaxeLevelCost'] = 2500000
                     self.upgradeCost.set(data['pickaxeLevelCost'])
                     
                     if data['dabloons'] >= data['pickaxeLevelCost']:
@@ -1316,14 +1316,14 @@ class UiApp:
                     if data['dabloons'] >= data['pickaxeSpeedCost']:
                         data['dabloons'] -= data['pickaxeSpeedCost']
                         data['pickaxeSpeed'] += 1
-                        data['pickaxeSpeedCost'] = 5000000
+                        data['pickaxeSpeedCost'] = 2500000
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
                         with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 4:
-                    data['pickaxeSpeedCost'] = 5000000
+                    data['pickaxeSpeedCost'] = 2500000
                     self.speedCost.set(data['pickaxeSpeedCost'])
                     
                     if data['dabloons'] >= data['pickaxeSpeedCost']:
