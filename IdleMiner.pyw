@@ -9,9 +9,12 @@ from time import sleep
 import random
 data = {}
 
-datajson = 'data.json'
-if not os.path.isfile(f'{datajson}'):
-    with open (f"{datajson}", 'w') as file:
+if platform == 'win32':
+    datajson = '\\data.json'
+else:
+    datajson = '/data.json'        
+if not os.path.isfile(f'{os.getcwd()}{datajson}'):
+    with open (f"{os.getcwd()}{datajson}", 'w') as file:
         file.write(
     """{
     "coal": 0,
@@ -45,11 +48,12 @@ if not os.path.isfile(f'{datajson}'):
     "pickaxeLevel": 0,
     "pickaxeSpeed": 0,
     "pickaxeLevelCost": 500,
-    "pickaxeSpeedCost": 500
+    "pickaxeSpeedCost": 500,
+    "multiplier": 1.0
 }
 """)
 
-with open(f"{datajson}") as file:
+with open(f"{os.getcwd()}{datajson}") as file:
     data = json.load(file)
         
 class UiApp:
@@ -57,7 +61,7 @@ class UiApp:
         # build ui
         toplevel1 = tk.Tk() if master is None else tk.Toplevel(master)
         toplevel1.configure(height=512, padx=5, pady=5, width=720)
-        toplevel1.geometry("1080x920")
+        toplevel1.geometry("640x480")
         toplevel1.maxsize(768, 576)
         toplevel1.minsize(768, 576)
         self.top_frame = ttk.Frame(toplevel1)
@@ -292,7 +296,7 @@ class UiApp:
         separator6.configure(orient="vertical")
         separator6.grid(column=3, padx=10, row=0, sticky="ns")
         frame4 = ttk.Frame(toplevel1)
-        frame4.configure(height=460, width=250)
+        frame4.configure(height=500, width=250)
         self.musicOnButton = ttk.Radiobutton(frame4)
         self.musicOn = tk.StringVar(value='1')
         self.musicOnButton.configure(
@@ -333,6 +337,17 @@ class UiApp:
         self.fovLabel = ttk.Label(frame4)
         self.fovLabel.configure(font="{MV Boli} 20 {}", text='FOV')
         self.fovLabel.grid(column=1, row=2)
+        self.prestigeButton = ttk.Button(frame4)
+        self.prestigeButton.configure(text='Prestige')
+        self.prestigeButton.grid(column=0, pady=10, row=5)
+        self.prestigeButton.configure(command=self.prestige)
+        self.multiplierLabel = ttk.Label(frame4)
+        self.multiplierLabel.configure(text='Current: ')
+        self.multiplierLabel.grid(column=1, row=5)
+        self.prestigeNum = ttk.Label(frame4)
+        self.multiplier = tk.DoubleVar()
+        self.prestigeNum.configure(textvariable=self.multiplier)
+        self.prestigeNum.grid(column=2, row=5)
         frame4.grid(column=4, row=0)
         frame4.grid_propagate(0)
         separator3 = ttk.Separator(toplevel1)
@@ -342,7 +357,7 @@ class UiApp:
         label12.configure(font="{Comic Sans MS} 20 {}", text='IDLEMINER')
         label12.grid(column=6, row=0, sticky="n")
         self.invisLabel4 = ttk.Label(toplevel1)
-        self.invisLabel4.configure(font="{Corbel} 8 {}", text='V1.1.1!')
+        self.invisLabel4.configure(font="{Corbel} 8 {}", text='V1.2!')
         self.invisLabel4.grid(column=6, row=0)
       
         self.coal.set(data['coal'])
@@ -377,12 +392,14 @@ class UiApp:
         self.upgradeCost.set(data['pickaxeLevelCost'])
         self.speedCost.set(data['pickaxeSpeedCost'])
         
+        self.multiplier.set(data['multiplier'])
+        
         self.musicOn.set(0)
 
         # Main widget
         self.mainwindow = toplevel1
         
-        toplevel1.title("IDLEMINER   V1.1.1")
+        toplevel1.title("IDLEMINER   V1.2")
 
 
     def run(self):
@@ -394,65 +411,65 @@ class UiApp:
 
     def sell(self):
         
-        data['dabloons'] += (data['coal'] * 1)
+        data['dabloons'] += int((data['coal'] * 1) * (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['tin'] * 2)
+        data['dabloons'] += int((data['tin'] * 2)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['iron'] * 3)
-        self.dabloons.set(data['dabloons'])
-        
-        data['dabloons'] += (data['tungsten'] * 7)
-        self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['gold'] * 10)
-        self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['platinum'] * 15)
+        data['dabloons'] += int((data['iron'] * 3)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
         
-        data['dabloons'] += (data['diamond'] * 35)
+        data['dabloons'] += int((data['tungsten'] * 7)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['emerald'] * 40)
+        data['dabloons'] += int((data['gold'] * 10)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['ruby'] * 50)
-        self.dabloons.set(data['dabloons'])
-        
-        data['dabloons'] += (data['mythril'] * 110)
-        self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['adamantite'] * 125)
-        self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['orichalcum'] * 140)
+        data['dabloons'] += int((data['platinum'] * 15)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
         
-        data['dabloons'] += (data['lanthanum'] * 300)
+        data['dabloons'] += int((data['diamond'] * 35)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['cerium'] * 360)
+        data['dabloons'] += int((data['emerald'] * 40)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['praseodymium'] * 450)
-        self.dabloons.set(data['dabloons'])
-        
-        data['dabloons'] += (data['promethium'] * 1000)
-        self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['europium'] * 1500)
-        self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['hafnium'] * 2250)
+        data['dabloons'] += int((data['ruby'] * 50)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
         
-        data['dabloons'] += (data['osmium'] * 6000)
+        data['dabloons'] += int((data['mythril'] * 110)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['bismuth'] * 7000)
+        data['dabloons'] += int((data['adamantite'] * 125)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['francium'] * 9000)
-        self.dabloons.set(data['dabloons'])
-        
-        data['dabloons'] += (data['neptunium'] * 25000)
-        self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['californium'] * 40000)
-        self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['einsteinium'] * 60000)
+        data['dabloons'] += int((data['orichalcum'] * 140)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
         
-        data['dabloons'] += (data['astatine'] * 200000)
+        data['dabloons'] += int((data['lanthanum'] * 300)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
-        data['dabloons'] += (data['tennessine'] * 500000)
+        data['dabloons'] += int((data['cerium'] * 360)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        data['dabloons'] += int((data['praseodymium'] * 450)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        
+        data['dabloons'] += int((data['promethium'] * 1000)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        data['dabloons'] += int((data['europium'] * 1500)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        data['dabloons'] += int((data['hafnium'] * 2250)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        
+        data['dabloons'] += int((data['osmium'] * 6000)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        data['dabloons'] += int((data['bismuth'] * 7000)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        data['dabloons'] += int((data['francium'] * 9000)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        
+        data['dabloons'] += int((data['neptunium'] * 25000)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        data['dabloons'] += int((data['californium'] * 40000)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        data['dabloons'] += int((data['einsteinium'] * 60000)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        
+        data['dabloons'] += int((data['astatine'] * 200000)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
+        self.dabloons.set(data['dabloons'])
+        data['dabloons'] += int((data['tennessine'] * 500000)* (data['multiplier'] * (1.00 + float(data['soakite'] / 10.00))))
         self.dabloons.set(data['dabloons'])
         
         
@@ -510,7 +527,7 @@ class UiApp:
         self.astatine.set(data['astatine'])
         self.tennessine.set(data['tennessine'])
         
-        with open(f"{datajson}", "w") as file:
+        with open(f"{os.getcwd()}{datajson}", "w") as file:
             json.dump(data, file, indent=4) 
 
 
@@ -520,7 +537,7 @@ class UiApp:
         
         if isPlaying == False:
             
-            filename = f"Ophanim.mp3"
+            filename = f"{os.getcwd()}\\Ophanim.mp3"
             
             pygame.mixer.init(frequency = 44100, size = -16, channels = 2, buffer = 2**12) 
             channel1 = pygame.mixer.Channel(0)
@@ -1139,7 +1156,7 @@ class UiApp:
                             self.soakite.set(data['soakite'])
                             self.oreFound.set("SOAKITE\n FOUND!!!")
                             
-            with open(f"{datajson}", "w") as file:
+            with open(f"{os.getcwd()}{datajson}", "w") as file:
                 json.dump(data, file, indent=4)
              
 
@@ -1160,7 +1177,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 1:
                     data['pickaxeLevelCost'] = 5000
@@ -1173,7 +1190,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 2:
                     data['pickaxeLevelCost'] = 50000
@@ -1186,7 +1203,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 3:
                     data['pickaxeLevelCost'] = 500000
@@ -1199,7 +1216,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 4:
                     data['pickaxeLevelCost'] = 2500000
@@ -1212,7 +1229,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 5:
                     data['pickaxeLevelCost'] = 10000000
@@ -1225,7 +1242,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 6:
                     data['pickaxeLevelCost'] = 100000000
@@ -1238,7 +1255,7 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 7:
                     data['pickaxeLevelCost'] = 1000000000
@@ -1251,13 +1268,13 @@ class UiApp:
                         self.upgradeCost.set(data['pickaxeLevelCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
         else:
             data['pickaxeLevelCost'] = 0
             self.upgradeCost.set(data['pickaxeLevelCost'])
             
-            with open(f"{datajson}", "w") as file:
+            with open(f"{os.getcwd()}{datajson}", "w") as file:
                 json.dump(data, file, indent=4) 
 
 
@@ -1278,7 +1295,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 1:
                     data['pickaxeSpeedCost'] = 5000
@@ -1291,7 +1308,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 2:
                     data['pickaxeSpeedCost'] = 50000
@@ -1304,7 +1321,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 3:
                     data['pickaxeSpeedCost'] = 500000
@@ -1317,7 +1334,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 4:
                     data['pickaxeSpeedCost'] = 2500000
@@ -1330,7 +1347,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 5:
                     data['pickaxeSpeedCost'] = 10000000
@@ -1343,7 +1360,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 6:
                     data['pickaxeSpeedCost'] = 100000000
@@ -1356,7 +1373,7 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
                 case 7:
                     data['pickaxeSpeedCost'] = 1000000000
@@ -1369,14 +1386,92 @@ class UiApp:
                         self.speedCost.set(data['pickaxeSpeedCost'])
                         self.dabloons.set(data['dabloons'])
                         
-                        with open(f"{datajson}", "w") as file:
+                        with open(f"{os.getcwd()}{datajson}", "w") as file:
                             json.dump(data, file, indent=4)
         else:
             data['pickaxeSpeedCost'] = 0
             self.speedCost.set(data['pickaxeSpeedCost'])
             
-            with open(f"{datajson}", "w") as file:
+            with open(f"{os.getcwd()}{datajson}", "w") as file:
                 json.dump(data, file, indent=4)
+
+    
+    def prestige(self):
+        
+        if data['pickaxeLevel'] >= 8 and data['pickaxeSpeed'] >= 8 and data['dabloons'] >= 1000000000:
+            
+            data['multiplier'] = round((data['multiplier'] + float((data['dabloons'] / 1000000000) / 100.00)), 2)
+            self.multiplier.set(data['multiplier'])
+            
+            data['coal'] = 0
+            data['tin'] = 0
+            data['iron'] = 0
+            data['tungsten'] = 0
+            data['gold'] = 0
+            data['platinum'] = 0
+            data['diamond'] = 0
+            data['emerald'] = 0
+            data['ruby'] = 0
+            data['mythril'] = 0
+            data['adamantite'] = 0
+            data['orichalcum'] = 0
+            data['lanthanum'] = 0
+            data['cerium'] = 0
+            data['praseodymium'] = 0
+            data['promethium'] = 0
+            data['europium'] = 0
+            data['hafnium'] = 0
+            data['osmium'] = 0
+            data['bismuth'] = 0
+            data['francium'] = 0
+            data['neptunium'] = 0
+            data['californium'] = 0
+            data['einsteinium'] = 0
+            data['astatine'] = 0
+            data['tennessine'] = 0
+            
+            data['pickaxeLevel'] = 0
+            data['pickaxeSpeed'] = 0
+            data['pickaxeLevelCost'] = 500
+            data['pickaxeSpeedCost'] = 500
+            
+            data['dabloons'] = 3
+            
+            self.coal.set(data['coal'])
+            self.tin.set(data['tin'])
+            self.iron.set(data['iron'])
+            self.tungsten.set(data['tungsten'])
+            self.gold.set(data['gold'])
+            self.platinum.set(data['platinum'])
+            self.diamond.set(data['diamond'])
+            self.emerald.set(data['emerald'])
+            self.ruby.set(data['ruby'])
+            self.mythril.set(data['mythril'])
+            self.adamantite.set(data['adamantite'])
+            self.orichalcum.set(data['orichalcum'])
+            self.lanthanum.set(data['lanthanum'])
+            self.cerium.set(data['cerium'])
+            self.praseodymium.set(data['praseodymium'])
+            self.promethium.set(data['promethium'])
+            self.europium.set(data['europium'])
+            self.hafnium.set(data['hafnium'])
+            self.osmium.set(data['osmium'])
+            self.bismuth.set(data['bismuth'])
+            self.francium.set(data['francium'])
+            self.neptunium.set(data['neptunium'])
+            self.californium.set(data['californium'])
+            self.einsteinium.set(data['einsteinium'])
+            self.astatine.set(data['astatine'])
+            self.tennessine.set(data['tennessine'])
+            
+            self.dabloons.set(data['dabloons'])
+            self.upgradeCost.set(data['pickaxeLevelCost'])
+            self.speedCost.set(data['pickaxeSpeedCost'])
+             
+            with open(f"{os.getcwd()}{datajson}", "w") as file:
+                json.dump(data, file, indent=4)
+            
+            
             
 
 

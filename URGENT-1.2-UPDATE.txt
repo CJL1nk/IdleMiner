@@ -1,0 +1,9 @@
+yo if you wanna avoid losing data or errors do this
+
+THIS ONLY APPLIES IF YOU HAVE A PREVIOUS VERSION INSTALLED:
+
+Open data.json
+Add a comma after the number in pickaxeSpeedCost, the line should then look like   "pickaxeSpeedCost": 5000000000,
+Add a line below with the following content:    "multiplier": 1.0
+
+basically you're adding a multiplier key
