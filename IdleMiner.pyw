@@ -1,7 +1,7 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 from threading import Thread
-import pygame
+from pygame import mixer
 from os import path, pardir
 from sys import platform
 import json
@@ -540,10 +540,10 @@ class UiApp:
             
             filename = path.join(file_dir, musicfile)
             
-            pygame.mixer.init(frequency = 44100, size = -16, channels = 2, buffer = 2**12) 
-            channel1 = pygame.mixer.Channel(0)
+            mixer.init(frequency = 44100, size = -16, channels = 2, buffer = 2**12) 
+            channel1 = mixer.Channel(0)
             
-            sound = pygame.mixer.Sound(filename)
+            sound = mixer.Sound(filename)
             channel1.play(sound, loops = -1)
             
             isPlaying = True
